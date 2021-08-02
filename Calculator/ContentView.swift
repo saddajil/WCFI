@@ -7,26 +7,37 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-
+    @State private var isMenuOpen:Bool = false
+    @ObservedObject var CVM:CalcViewModel = CalcViewModel()
     var body: some View {
-        GeometryReader { metrics in
-            HStack {
-            
+        GeometryReader { geometry in
+            VStack {
                 
-                VStack{
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                    })
-                    
+                Text(CVM.expression)
+                    .font(.custom("expression", size: 30))
+                    .padding()
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.2, alignment: .trailing)
+                HStack{
+//                    ForEach(id: \.self) { vale in
+                    Button(action: {
+                        CVM.action  (Symbol: "1")
+                    }, label: {
+                        Text("Button")
+                    }).buttonStyle(numButtonStyle())
+//                    }
+                }.frame(width: geometry.size.width, height: geometry.size.height * 0.8, alignment: .center)
+                if isMenuOpen {
+                    HStack{
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text("Button")
+                        })
+                    }
                 }
-                VStack{
-                    
-                }
-            }.frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }
             
         }
     }
@@ -36,7 +47,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().landscape() .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+//            .landscape()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             
     }
 }
@@ -56,3 +69,4 @@ struct LandscapeModifier: ViewModifier {
             .environment(\.verticalSizeClass, .compact)
     }
 }
+
