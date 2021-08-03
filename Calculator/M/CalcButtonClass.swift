@@ -7,7 +7,12 @@
 
 import Foundation
 
-class ButtonModel {
+class ButtonModel{
+    init(Symbol:String, buttonType:String){
+        
+    }
+    
     let Symbol : String = ""
     let type : String = ""
+
 }
