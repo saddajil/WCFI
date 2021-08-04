@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AA00A8626BA2C96006CA0A7 /* CalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7482326B793560092E0BE /* CalcViewModel.swift */; };
 		5AA01AF52697DF49001CBF7D /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA01AF42697DF49001CBF7D /* CalculatorApp.swift */; };
 		5AA01AF72697DF49001CBF7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA01AF62697DF49001CBF7D /* ContentView.swift */; };
 		5AA01AF92697DF49001CBF7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AA01AF82697DF49001CBF7D /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		5AA01B0C2697DF49001CBF7D /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA01B0B2697DF49001CBF7D /* CalculatorTests.swift */; };
 		5AA01B172697DF49001CBF7D /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA01B162697DF49001CBF7D /* CalculatorUITests.swift */; };
 		5AA7481F26B763A30092E0BE /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7481E26B763A30092E0BE /* ButtonStyle.swift */; };
-		5AA7482426B793560092E0BE /* CalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7482326B793560092E0BE /* CalcViewModel.swift */; };
 		5AA7482926B794D50092E0BE /* CalcButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7482826B794D50092E0BE /* CalcButtonClass.swift */; };
 		5ACCAFD526B8C5720051BD00 /* PreviewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCAFD426B8C5720051BD00 /* PreviewUtil.swift */; };
 /* End PBXBuildFile section */
@@ -322,9 +322,9 @@
 				5AA01AF72697DF49001CBF7D /* ContentView.swift in Sources */,
 				5AA7481F26B763A30092E0BE /* ButtonStyle.swift in Sources */,
 				5ACCAFD526B8C5720051BD00 /* PreviewUtil.swift in Sources */,
+				5AA00A8626BA2C96006CA0A7 /* CalcViewModel.swift in Sources */,
 				5AA01AF52697DF49001CBF7D /* CalculatorApp.swift in Sources */,
 				5AA7482926B794D50092E0BE /* CalcButtonClass.swift in Sources */,
-				5AA7482426B793560092E0BE /* CalcViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

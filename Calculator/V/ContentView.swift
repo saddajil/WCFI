@@ -25,13 +25,10 @@ struct ContentView: View {
                     .font(.custom("expression", size: 30))
                     .padding()
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.15, alignment: .trailing)
-                HStack{
-                    ForEach(CVM.CalcButtonArr ,id: \.Symbol) { val in
-                        Button(action: {
-                            CVM.action(Symbol: val.Symbol)
-                        }, label: {
-                            Text(val.Symbol)
-                        }).buttonStyle(numButtonStyle())
+                VStack{
+                    
+                    ForEach(0..<CVM.CalcButtonArr.count) { value in
+                        setButton(arr: CVM.CalcButtonArr[value])
                     }
                 }.frame(width: geometry.size.width, height: geometry.size.height * 0.8, alignment: .center)
                 if isMenuOpen {
@@ -46,6 +43,34 @@ struct ContentView: View {
                 CVM.setCalcButtonArr(Type: "Basic")
             })
         }
+    }
+    func setButton(arr:[ButtonModel]) -> some View{
+        return AnyView(HStack{
+            ForEach(arr,id:\.Symbol) { value in
+                if value.Symbol == "Num"{
+                Button(action: {
+                        CVM.action(Symbol: value.Symbol)
+                    }, label: {
+                        Text(value.Symbol)
+                    }).buttonStyle(numButtonStyle())
+                }
+                
+                else if value.Symbol == "Char" {
+                    Button(action: {
+                        CVM.action(Symbol: value.Symbol)
+                    }, label: {
+                        Text(value.Symbol)
+                    }).buttonStyle(charButtonStyle())
+                }
+                else {
+                    Button(action: {
+                        CVM.action(Symbol: value.Symbol)
+                    }, label: {
+                        Text(value.Symbol)
+                    }).buttonStyle(arithmeticButtonStyle())
+                }
+            }
+        })
     }
 }
 

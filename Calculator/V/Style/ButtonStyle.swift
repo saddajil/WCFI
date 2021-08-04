@@ -23,7 +23,18 @@ struct numButtonStyle: ButtonStyle {
     }
 
 }
-struct symbolButtonStyle: ButtonStyle {
+struct charButtonStyle: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .foregroundColor(.black)
+            .padding()
+            .background( RoundedRectangle(cornerRadius: 5.0).fill(Color.gray))
+    }
+
+}
+struct arithmeticButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
            configuration.label
