@@ -7,12 +7,20 @@
 
 import Foundation
 
-class ButtonModel{
-    init(Symbol:String, buttonType:String){
-        
+struct ButtonModel:Codable, Identifiable{
+    let id : Int
+    
+    init(id:Int,Symbol:String, buttonType:String){
+        self.id = id
+        self.Symbol = Symbol
+        self.BtnType = buttonType
     }
     
-    let Symbol : String = ""
-    let type : String = ""
+    var Symbol : String = ""
+    var BtnType : String = ""
 
+}
+struct ButtonArrModel: Codable, Identifiable{
+    let id : Int
+    var BtnArr:[ButtonModel] = []
 }
