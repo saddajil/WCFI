@@ -25,10 +25,10 @@ class CalcViewModel : ObservableObject {
             var arr :  ButtonArrModel = ButtonArrModel(id: countArr, BtnArr: [])
             for i in BasicButtonArr {
 
-                if (i.range(of:"[0-9]|00", options:.regularExpression) != nil) {
+                if (i.range(of:"[0-9]|00|\\.", options:.regularExpression) != nil) {
                     arr.BtnArr.append(ButtonModel(id:count,Symbol: i, buttonType: "Num"))
                 }
-                else if (i.range(of: "C|±|%", options:.regularExpression) != nil) {
+                else if (i.range(of: "\\C|\\±|\\%", options:.regularExpression) != nil) {
                     arr.BtnArr.append(ButtonModel(id:count,Symbol: i, buttonType: "Char"))
                 }
                 else if (i.range(of: "\\+|\\-|\\÷|\\×|\\=", options:.regularExpression) != nil) {
@@ -46,24 +46,42 @@ class CalcViewModel : ObservableObject {
         }
     }
     func action(Symbol:String){
+        var last: String = ""
+        if expression.count > 0 {
+            last = String(expression.removeLast())
+        }
+        
         switch Symbol {
         case "1","2","3","4","5","6","7","8","9":
             expression += Symbol
-        case "+","-","*","/":
-            if expression == "" {
+        case "0" :
+            if expression.count > 0 {
+                expression +=  Symbol
+            }
+            
+        case "+","-","×","÷":
+           
+            if expression == "" && last == "" {
                 
+            }
+            else if last.range(of:"[0-9]|00|\\.", options:.regularExpression) != nil {
+                expression += last + " " + Symbol
             }
             else {
                 expression += Symbol
             }
         case "=" :
             Calc()
+        case "C" :
+            expression = ""
         default:
             break
         }
 
     }
     func Calc(){
+        var tempEXP = self.expression
+        tempEXP.components(separatedBy: " ")
         result = "1"
     }
 }

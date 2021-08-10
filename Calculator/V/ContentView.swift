@@ -30,21 +30,33 @@ struct ContentView: View {
                         HStack{
                             ForEach(val.BtnArr){
                                 btn in
-                                Button(btn.Symbol,action:{
-                                    CVM.action(Symbol: btn.Symbol)
-                                        .buttonStyle(btn.BtnType == "NUM" ? numButtonStyle : btn.BtnType == "Char" ? charButtonStyle : arithmeticButtonStyle)
-                                })
+                                if btn.BtnType == "Num" {
+                                    Button(btn.Symbol,action:{
+                                        CVM.action(Symbol: btn.Symbol)
+                                    }).myStyle(.Num)
+                                }
+                                else if btn.BtnType == "Arithmetic"{
+                                    Button(btn.Symbol,action:{
+                                        CVM.action(Symbol: btn.Symbol)
+                                    }).myStyle(.Arithmetic)
+                                }
+                                else {
+                                    Button(btn.Symbol,action:{
+                                        CVM.action(Symbol: btn.Symbol)
+                                    }).myStyle(.Char)
+                                }
+                                
                             }
                         }
                     }
                 }.frame(width: geometry.size.width, height: geometry.size.height * 0.8, alignment: .center)
-//                if isMenuOpen {
+                if isMenuOpen {
                     HStack{
                         Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                             Text("Button")
                         })
                     }
-//                }
+                }
             }
             .onAppear(perform: {
                 CVM.setCalcButtonArr(Type: "Basic")
@@ -71,5 +83,23 @@ extension View {
         self.modifier(LandscapeModifier())
     }
 }
+enum MyBtnStyle:String {
+    case Num = "Num"
+    case Char = "Char"
+    case Arithmetic = "Arithmetic"
+}
 
-
+extension Button {
+    @ViewBuilder
+    func myStyle(_ style: MyBtnStyle) -> some View{
+        switch style {
+        case .Num:
+            self.buttonStyle(numButtonStyle())
+        case .Char:
+            self.buttonStyle(charButtonStyle())
+        case .Arithmetic:
+            self.buttonStyle(arithmeticButtonStyle())
+        
+        }
+    }
+}

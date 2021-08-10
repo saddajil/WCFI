@@ -15,7 +15,10 @@ public struct MyButtonStyleConfiguration {
 struct numButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
+    
         configuration.label
+            .frame(width:25)
+            
             .padding()
             .foregroundColor(.black)
             .padding()
@@ -27,6 +30,7 @@ struct charButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .frame(width:25)
             .padding()
             .foregroundColor(.black)
             .padding()
@@ -38,6 +42,7 @@ struct arithmeticButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
            configuration.label
+            .frame(width:25)
                .padding()
                .foregroundColor(.white)
                .padding()
@@ -46,3 +51,10 @@ struct arithmeticButtonStyle: ButtonStyle {
        }
 
 }
+func ISLAND() -> Bool{
+    guard let interfaceOrientation = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.windowScene?.interfaceOrientation else { return false }
+    return interfaceOrientation.isLandscape
+
+}
+
+

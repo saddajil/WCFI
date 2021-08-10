@@ -1,5 +1,5 @@
 //
-//  CalcButtonClass.swift
+//  CalcButtonModel.swift
 //  Calculator
 //
 //  Created by 허영호 on 2021/08/02.
