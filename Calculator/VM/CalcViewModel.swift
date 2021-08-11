@@ -81,7 +81,20 @@ class CalcViewModel : ObservableObject {
     }
     func Calc(){
         var tempEXP = self.expression
-        tempEXP.components(separatedBy: " ")
+        var Arr = tempEXP.components(separatedBy: " ")
+        var postfix:[String] = []
+        for Val in Arr {
+            switch Val {
+            case "+","-":
+                break
+            case "×","÷":
+                break
+            default:
+                postfix.append(Val)
+                
+            }
+        }
+        
         result = "1"
     }
 }
